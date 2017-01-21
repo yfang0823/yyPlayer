@@ -65,13 +65,15 @@ bar.addEventListener('click', function(event){
     var barLeft = getElementLeft(bar)
     var left = e.clientX
     log('bar click', barLeft, left)
-    // var d = Math.floor(left - barWidth / 2)
-    // // log('d', d)
-    // var percent = d / barWidth
-    // if(percent < 0) {
-    //     percent = 0
-    // }else if(percent > 1) {
-    //     percent = 1
-    // }
-    // player.currentTime = percent * player.duration;
+    var d = left - barLeft
+    var barWidth = $(bar).width()
+    // log('d', d)
+    var percent = d / barWidth
+    if(percent < 0) {
+        percent = 0
+    }else if(percent > 1) {
+        percent = 1
+    }
+    var player = $('audio')[0]
+    player.currentTime = percent * player.duration;
 });

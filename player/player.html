@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>音乐播放器</title>
+    <!-- <script src=yang.js></script> -->
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+    <link rel="stylesheet" href="player.css">
+  </head>
+  <body>
+      <div class="audio_player">
+          <audio id="id-audio-player" controls="controls" src="music/1.mp3">
+          </audio>
+      </div>
+
+      <div class="qq_player">
+          <div class="player__ft" id="opbanner">
+
+              <div class="player_music">
+                  <div class="player_music_info" id="sim_song_info"> - </div>
+                  <div class="player_music_time" id="time_show"> </div>
+                  <div class="player_progress" id="progress">
+                      <div class="player_progress_inner" id="spanplayer_bgbar" title="[快进ctrl+alt+→][快退ctrl+alt+←]">
+                          <div class="player_progress_load" id="downloadbar" style="width: 100%;"></div>
+                          <div class="player_progress_play" style="width: 50%;" id="spanplaybar">
+                              <i class="player_progress_dot" id="spanprogress_op"></i>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="player_progress player_voice" id="voice">
+                  <div class="player_progress_inner" id="spanvolume" title="调节音量 [增大alt+↑][减小alt+↓]">
+                      <div class="player_progress_play" style="width:50%;" id="spanvolumebar">
+                          <i class="player_progress_dot" id="spanvolumeop"></i>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+      <div class="bg_player_mask"></div>
+      <script src=player.js></script>
+      <!-- <script src=control.js></script> -->
+  </body>
+</html>

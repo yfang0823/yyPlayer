@@ -41,7 +41,7 @@ setInterval(function(){
     play_time.innerHTML = `${c} / ${d}`
     // 计算播放进度比例 改变进度条宽度百分比
     var percent = currentTime / duration * 100 + '%'
-    $('.player_progress_play').width(percent)
+    $('#spanplaybar').width(percent)
 }, 100)
 
 // 获取元素左端距离边界的距离
@@ -88,13 +88,54 @@ voiceBar.addEventListener('click', function(event){
     log('bar click', barLeft, left)
     var d = left - barLeft
     var barWidth = $(voiceBar).width()
-    var percent = d / barWidth
+    var volume = d / barWidth
+    var percent = volume * 100 + '%'
     if(percent < 0) {
         percent = 0
     }else if(percent > 1) {
         percent = 1
     }
     var player = $('audio')[0]
-    player.volume = percent;
-    log('volume changed ', player.volume)
+    player.volume = volume;
+    $('#spanvolumebar').width(percent)
+    log('volume changed ', player.volume, percent)
 });
+
+// 鼠标拖动滚动条效果
+// const thumbMove = (event) => {
+//     const e = event || window.event;
+//     let percentage = (e.clientX - getElementViewLeft(bar.barWrap)) / barWidth;
+//     percentage = percentage > 0 ? percentage : 0;
+//     percentage = percentage < 1 ? percentage : 1;
+//     this.updateBar('played', percentage, 'width');
+//     if (this.option.showlrc) {
+//         this.updateLrc(parseFloat(bar.playedBar.style.width) / 100 * this.audio.duration);
+//     }
+//     this.element.getElementsByClassName('aplayer-ptime')[0].innerHTML = this.secondToTime(percentage * this.audio.duration);
+// };
+//
+// const thumbUp = () => {
+//     document.removeEventListener('mouseup', thumbUp);
+//     document.removeEventListener('mousemove', thumbMove);
+//     if (isNaN(this.audio.duration)) {
+//         this.updateBar('played', 0, 'width');
+//     }
+//     else {
+//         this.audio.currentTime = parseFloat(bar.playedBar.style.width) / 100 * this.audio.duration;
+//         this.playedTime = setInterval(() => {
+//             this.updateBar('played', this.audio.currentTime / this.audio.duration, 'width');
+//             if (this.option.showlrc) {
+//                 this.updateLrc();
+//             }
+//             this.element.getElementsByClassName('aplayer-ptime')[0].innerHTML = this.secondToTime(this.audio.currentTime);
+//             this.trigger('playing');
+//         }, 100);
+//     }
+// };
+//
+// thumb.addEventListener('mousedown', () => {
+//     barWidth = bar.barWrap.clientWidth;
+//     clearInterval(this.playedTime);
+//     document.addEventListener('mousemove', thumbMove);
+//     document.addEventListener('mouseup', thumbUp);
+// });

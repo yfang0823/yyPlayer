@@ -60,7 +60,7 @@ function getElementLeft(element) {
 // 绑定播放进度条click事件
 var bar = $('.player_progress')[0]
 bar.addEventListener('click', function(event){
-    log('click this ', this)
+    log('bar click ', this)
     const e = event || window.event;
     var barLeft = getElementLeft(bar)
     var left = e.clientX
@@ -76,4 +76,25 @@ bar.addEventListener('click', function(event){
     }
     var player = $('audio')[0]
     player.currentTime = percent * player.duration;
+});
+
+// 绑定音量控制条click事件
+var voiceBar = $('.player_voice')[0]
+voiceBar.addEventListener('click', function(event){
+    log('voiceBar click ', this)
+    const e = event || window.event;
+    var barLeft = getElementLeft(voiceBar)
+    var left = e.clientX
+    log('bar click', barLeft, left)
+    var d = left - barLeft
+    var barWidth = $(voiceBar).width()
+    var percent = d / barWidth
+    if(percent < 0) {
+        percent = 0
+    }else if(percent > 1) {
+        percent = 1
+    }
+    var player = $('audio')[0]
+    player.volume = percent;
+    log('volume changed ', player.volume)
 });

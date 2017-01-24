@@ -47,7 +47,15 @@ var init = function() {
 
 bindEvent(player, 'canplay', init)
 
+var showTime = function() {
+    var curString = convert(player.currentTime)
+    var durString = convert(player.duration)
+    var display = `${curString} / ${durString}`
+    $('.player-time-show').text(display)
+}
+
 setInterval(function(){
     playerBar.val(player.currentTime)
     voiceBar.val(player.volume)
+    showTime()
 }, 100)

@@ -33,7 +33,32 @@
     display: inline-block;
     width: 80px;
     bottom: 80px;
-    right: 330px;
+    left: 630px;
+}
+.controls {
+    display: inline-block;
+    position: absolute;
+    left: 135px;
+    top: 62px;
+    width: 150px;
+    height: 40px;
+}
+.controls a,img {
+    text-decoration: none;
+    border: none;
+}
+.controls-prev {
+    position: absolute;
+    left: 0;
+}
+.controls-play {
+    position: absolute;
+    left: 45px;
+    bottom: 3px;
+}
+.controls-next {
+    position: absolute;
+    left: 100px;
 }
 /*
   播放进度条

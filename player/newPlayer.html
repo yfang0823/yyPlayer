@@ -4,12 +4,22 @@
     <meta charset="utf-8">
     <title>newPlyer</title>
     <link rel="stylesheet" href="newPlayer.css">
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+    <script src="yang.js"></script>
   </head>
   <body>
+      <div class="player-audio">
+          <audio controls src="music/1.mp3">
+          </audio>
+      </div>
       <div class="player">
           <div class="player-bar">
-              <input type="range" step="any" min="0">
+              <input type="range" step="any" min="0" value="0" id="id-player-slider">
+          </div>
+          <div class="voice-bar">
+              <input type="range" step="any" min="0" max="1" orient="vertical" value = "0.3" id="id-voice-slider">
           </div>
       </div>
+      <script src=player.js></script>
   </body>
 </html>

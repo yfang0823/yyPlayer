@@ -147,4 +147,7 @@ var bindControls = function() {
 
 bindControls()
 
-// todo 音量图标 点击显示音量控制条 静音功能 
+// 点击volume图标切换音量条显示
+$('.volume-control').on('click', function(event){
+    $('.voice-bar').toggle()
+})

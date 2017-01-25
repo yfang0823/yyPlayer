@@ -33,7 +33,7 @@
     display: inline-block;
     width: 80px;
     bottom: 80px;
-    left: 630px;
+    left: 705px;
 }
 .controls {
     display: inline-block;
@@ -59,6 +59,12 @@
 .controls-next {
     position: absolute;
     left: 100px;
+}
+.volume-control {
+    display: inline-block;
+    position: absolute;
+    left: 685px;
+    bottom: 40px;
 }
 /*
   播放进度条

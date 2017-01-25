@@ -72,14 +72,27 @@ const triggerPause = function() {
 var bindPlay = function() {
     $('.controls-play').on('click', function(event){
         log('play click', this)
-        var className = 'control-stop'
-        toggleClass(this, className)
-        if(this.classList.contains(className)) {
-            triggerPause()
-        }else {
-            triggerPlay()
-        }
+        togglePlay(this)
     })
+}
+
+var togglePlay = function(element) {
+    var className = 'controls-stop'
+    toggleClass(element, className)
+    if(element.classList.contains(className)) {
+        triggerPause()
+        setImage('play')
+    }else {
+        triggerPlay()
+        setImage('pause')
+    }
+}
+
+var imgUrl = 'image/'
+
+var setImage = function(imageName) {
+    var img = e('.img-play')
+    img.src = `${imgUrl}${imageName}.png`
 }
 
 var baseUrl = 'music/'
@@ -97,6 +110,7 @@ var bindPrev = function() {
         audio.dataset.index = newIndex
         var newSrc  = baseUrl + musicLists[newIndex]
         player.src = newSrc
+        switchPlay()
     })
 }
 
@@ -112,7 +126,17 @@ var bindNext = function() {
         audio.dataset.index = newIndex
         var newSrc  = baseUrl + musicLists[newIndex]
         player.src = newSrc
+        switchPlay()
     })
+}
+
+var switchPlay = function() {
+    var className = 'controls-stop'
+    var element = $('.controls-play')
+    if(!element.hasClass(className)) {
+        element.addClass(className)
+        setImage('play')
+    }
 }
 
 var bindControls = function() {

@@ -40,7 +40,6 @@ const init = function() {
     var max = player.duration
     playerBar.attr('max', max)
     playerBar.val(player.currentTime)
-    bindControls()
 }
 
 bindEvent(player, 'canplay', init)
@@ -69,34 +68,57 @@ const triggerPause = function() {
     player.pause()
 }
 
-// play图片绑定播放事件
+// 图片绑定播放控制事件
+var bindPlay = function() {
+    $('.controls-play').on('click', function(event){
+        log('play click', this)
+        var className = 'control-stop'
+        toggleClass(this, className)
+        if(this.classList.contains(className)) {
+            triggerPause()
+        }else {
+            triggerPlay()
+        }
+    })
+}
+
+var baseUrl = 'music/'
+var musicLists = ['1.mp3', '2.mp3', '3.mp3', '4.mp3', '5.mp3']
+
+var bindPrev = function() {
+    $('.controls-prev').on('click', function(event){
+        log('prev click', this)
+        var audio = e('.player-audio')
+        var index = audio.dataset.index
+        index = parseInt(index)
+        var size = musicLists.length
+        var newIndex = (index - 1 + size) % size
+        log(newIndex)
+        audio.dataset.index = newIndex
+        var newSrc  = baseUrl + musicLists[newIndex]
+        player.src = newSrc
+    })
+}
+
+var bindNext = function() {
+    $('.controls-next').on('click', function(event){
+        log('next click', this)
+        var audio = e('.player-audio')
+        var index = audio.dataset.index
+        index = parseInt(index)
+        var size = musicLists.length
+        var newIndex = (index + 1) % size
+        log(newIndex)
+        audio.dataset.index = newIndex
+        var newSrc  = baseUrl + musicLists[newIndex]
+        player.src = newSrc
+    })
+}
+
 var bindControls = function() {
     bindPlay()
     bindPrev()
     bindNext()
 }
 
-var bindPlay = function() {
-    $('.controls-play').on('click', function(event){
-      log('play click', this)
-      var className = 'control-stop'
-      toggleClass(this, className)
-      if(this.classList.contains(className)) {
-          triggerPause()
-      }else {
-          triggerPlay()
-      }
-    })
-}
-
-var bindPrev = function() {
-    $('.controls-prev').on('click', function(event){
-      log('prev click', this)
-    })
-}
-
-var bindNext = function() {
-    $('.controls-next').on('click', function(event){
-      log('next click', this)
-    })
-}
+bindControls()

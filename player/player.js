@@ -106,7 +106,6 @@ var bindPrev = function() {
         index = parseInt(index)
         var size = musicLists.length
         var newIndex = (index - 1 + size) % size
-        log(newIndex)
         audio.dataset.index = newIndex
         var newSrc  = baseUrl + musicLists[newIndex]
         player.src = newSrc
@@ -122,7 +121,6 @@ var bindNext = function() {
         index = parseInt(index)
         var size = musicLists.length
         var newIndex = (index + 1) % size
-        log(newIndex)
         audio.dataset.index = newIndex
         var newSrc  = baseUrl + musicLists[newIndex]
         player.src = newSrc
